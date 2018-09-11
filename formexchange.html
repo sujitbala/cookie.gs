@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS -Register 4r free</title>
+</head>
+<body>
+	<h4>Thank you! Your form has been submitted successfully. Please make sure your data is correct.</h4>
+	
+	<div id="data"></div>
+
+	<p><button onclick="goBack();">Click Here</button> for correction.</p>
+
+	<script>
+		d = document;
+		let data = d.querySelector("#data");
+
+		let mycookies = d.cookie.split("; ");
+		let values, name, email, address, phone, bio;
+		for (let i = 0; i < mycookies.length; i++) {
+			values = mycookies[i].split("=");
+			if (values[0] === 'yourname') {
+				name = values[1];
+			}
+			if (values[0] === 'youremail') {
+				email = values[1];
+			}
+			if (values[0] === 'youraddress') {
+				address = values[1];
+			}
+			if (values[0] === 'yourphone') {
+				phone = values[1];
+			}
+		}
+
+		let content = '<table width="400">' +
+							'<tr>' +
+								'<td>Name</td>' +
+								'<td>' + name + '</td>' +
+							'</tr>' +
+							'<tr>' +
+								'<td>Email</td>' +
+								'<td>' + email + '</td>' +
+							'</tr>' +
+							'<tr>' +
+								'<td>Address</td>' +
+								'<td>' + address + '</td>' +
+							'</tr>' +
+							'<tr>' +
+								'<td>Phone</td>' +
+								'<td>' + phone + '</td>' +
+							'</tr>' +
+						'</table>';
+		data.innerHTML = content;
+
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+</body>
+</html>
